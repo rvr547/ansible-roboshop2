@@ -29,7 +29,7 @@
       state: directory
 
   - name: download and extract dispatch
-    ansibl.builtin.unarchive:
+    ansible.builtin.unarchive:
       src: https://roboshop-builds.s3.amazonaws.com/dispatch.zip
       dest: /app
       remote_src: yes
