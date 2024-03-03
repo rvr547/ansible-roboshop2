@@ -39,7 +39,7 @@
       remote_src: yes  
 
   - name: Install dependencies
-    ansible.builtin.command: pip3.6 install -r requirements.txt
+    ansible.builtin.command: pip3.6 install --user requirements.txt
     args:
       chdir: /app
 
