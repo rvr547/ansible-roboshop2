@@ -34,7 +34,7 @@
   - name: download catlogue artifact
     ansible.builtin.get_url:
      url: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-     path: /tmp
+     dest: /tmp
 
   - name: Extract catalogue
     ansible.builtin.unarchive:
