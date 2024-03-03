@@ -34,12 +34,11 @@
 
   - name: download and Extract catalogue
     ansible.builtin.unarchive:
-      src: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+      src: https://roboshop-builds.s3.amazonaws.com/payment.zip
       dest: /app
       remote_src: yes  
 
   - name: Install dependencies
-    become: no
     ansible.builtin.command: pip3.6 install -r requirements.txt
     args:
       chdir: /app
