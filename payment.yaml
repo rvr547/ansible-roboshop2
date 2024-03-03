@@ -12,7 +12,7 @@
     - python3-devel
       
   - name: check if roboshop user exist or not
-      ansible.builtin.command: id roboshop
+      ansible.builtin.shell: id roboshop
       register: output
       ignore_errors: true
 
