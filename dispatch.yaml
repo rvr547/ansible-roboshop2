@@ -25,7 +25,7 @@
   - name: create directory
     when: output.stat.exists == false
     ansible.builtin.file:
-      parth: /app
+      path: /app
       state: directory
 
   - name: download and extract dispatch
