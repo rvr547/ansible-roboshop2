@@ -12,16 +12,16 @@
     - python3-devel
       
   - name: check if roboshop user exist or not
-      ansible.builtin.shell: id roboshop
-      register: output
-      ignore_errors: true
+    ansible.builtin.command: id roboshop
+    register: output
+    gnore_errors: true
 
-    - name: create roboshop user
-      when: output.rc == 1
-      ansible.builtin.user:
-        name: roboshop
+  - name: create roboshop user
+    when: output.rc == 1
+    ansible.builtin.user:
+      name: roboshop
     
-    - name: check if app directory exists or not
+  - name: check if app directory exists or not
       ansible.builtin.stat:
         path: /app
       register: out
@@ -56,4 +56,4 @@
       ansible.builtin.service:
         name: payment
         enabled: true
-        state: started
+        state: started  
