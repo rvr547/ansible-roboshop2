@@ -38,22 +38,22 @@
       dest: /app
       remote_src: yes  
 
-  - name: Download dependencied
+  - name: Install dependencies
     ansible.builtin.command: pip3.6 install -r requirements.txt
     args:
       chdir: /app
-    
-  - name: Copy payment service
+
+  - name: copy payment service
     ansible.builtin.copy:
       src: payment.service
       dest: /etc/systemd/system/payment.service
 
-  - name: daemon reload
-    ansible.builtin.systemd: 
-      daemon-reload: true
+  - name: deamon reload
+    ansible.builtin.systemd:
+      daemon_reload: true
 
-  - name: enable and start service
+  - name: restart payment
     ansible.builtin.service:
       name: payment
-      enabled: true
-      state: started    
+      state: restarted
+      enabled: true   
