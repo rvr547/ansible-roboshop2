@@ -20,7 +20,7 @@
       state: started
 
   - name: chnageing dafault user name
-    ansible.buitin.shell: rabbitmqctl add_user roboshop roboshop123
+    ansible.buitin.shell: "rabbitmqctl add_user roboshop roboshop123"
 
   - name: chnageing dafault permissions
-    ansible.buitin.shell: rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+    ansible.buitin.shell: "rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" ""
