@@ -32,7 +32,7 @@
     ansibl.builtin.unarchive:
       src: https://roboshop-builds.s3.amazonaws.com/dispatch.zip
       dest: /app
-      remote_src: true
+      remote_src: yes
 
   - name: download dependencies
     ansible.builtin.command: "{{item}}"
