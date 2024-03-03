@@ -22,38 +22,38 @@
       name: roboshop
     
   - name: check if app directory exists or not
-      ansible.builtin.stat:
-        path: /app
-      register: out
+    ansible.builtin.stat:
+      path: /app
+    register: out
 
-    - name: create app directory if it doest not exist
-      when: out.stat.exists == false
-      ansible.builtin.file:
-        path: /app
-        state: directory
+  - name: create app directory if it doest not exist
+    when: out.stat.exists == false
+    ansible.builtin.file:
+      path: /app
+      state: directory
 
-    - name: download and Extract catalogue
-      ansible.builtin.unarchive:
-        src: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-        dest: /app
-        remote_src: yes
+  - name: download and Extract catalogue
+    ansible.builtin.unarchive:
+      src: https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+      dest: /app
+      remote_src: yes  
 
-    - name: Download dependencied
-      ansible.builtin.command: pip3.6 install -r requirements.txt
-      args:
-        chdir: /app
+  - name: Download dependencied
+    ansible.builtin.command: pip3.6 install -r requirements.txt
+    args:
+      chdir: /app
     
-    - name: Copy payment service
-      ansible.builtin.copy:
-        src: payment.service
-        dest: /etc/systemd/system/payment.service
+  - name: Copy payment service
+    ansible.builtin.copy:
+      src: payment.service
+      dest: /etc/systemd/system/payment.service
 
-    - name: daemon reload
-      ansible.builtin.systemd: 
-        daemon-reload: true
+  - name: daemon reload
+    ansible.builtin.systemd: 
+      daemon-reload: true
 
-    - name: enable and start service
-      ansible.builtin.service:
-        name: payment
-        enabled: true
-        state: started  
+  - name: enable and start service
+    ansible.builtin.service:
+      name: payment
+      enabled: true
+      state: started    
