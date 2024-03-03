@@ -19,8 +19,8 @@
       enabled: true
       state: started
 
-  - name: chnageing dafault user name
-    ansible.buitin.shell: "rabbitmqctl add_user roboshop roboshop123"
+  - name: create rabbitmq user
+    ansible.builtin.shell: rabbitmqctl add_user roboshop roboshop123
 
-  - name: chnageing dafault permissions
-    ansible.buitin.shell: "rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" ""
+  - name: setup permissions
+    ansible.builtin.shell: rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
