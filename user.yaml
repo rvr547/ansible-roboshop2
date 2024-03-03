@@ -8,7 +8,7 @@
   - name: Install nodejs
     ansible.builtin.yum:
       name: nodejs
-      state: started
+      state: installed
   
   - name: check if roboshop user exist or not
     ansible.builtin.command: id roboshop
@@ -23,7 +23,7 @@
   - name: check if app directory exists or not
     ansible.builtin.stat:
       path: /app
-      register: out
+    register: out
 
   - name: create app directory if it doest not exist
     when: out.stat.exists == false
